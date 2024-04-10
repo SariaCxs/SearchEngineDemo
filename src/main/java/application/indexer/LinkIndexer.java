@@ -39,7 +39,6 @@ public class LinkIndexer {
 
     public void delete(int pageId){
         Set<Integer> linkIds = getLinkIdsByPageId(PAGE_ID_TO_CHILD_ID,pageId);
-        //remove pageId in the set of parentID of the child id
         for(Integer link:linkIds){
             Set<Integer> parentIds = getLinkIdsByPageId(PAGE_ID_TO_PARENT_ID, link);
             parentIds.remove(pageId);

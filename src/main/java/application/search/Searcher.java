@@ -20,7 +20,6 @@ public class Searcher {
     public List<SearchResult> search(String query) {
         //tokenize the query
         List<String> queryTokens = TokenizerHandler.tokenize(query);
-
         //calculateWeights of querytoken in each page: Map<pageId, Map<String, tfxidf/tfmax>>
         Map<Integer, Map<String, Double>> documentVectors = calculateWeights(queryTokens);
         //get all title matched pages: Set<Integer>
@@ -32,7 +31,6 @@ public class Searcher {
         List<HashMap.SimpleEntry<Integer,Double>> topPages = getTopPages(queryTokens, documentVectors,titleMatched);
         //Build return search result to frontend
         return processResults(topPages);
-//        return null;
     }
 
     public Set<Integer> PagesMatchedInTitle(List<String> querytokens){
@@ -66,7 +64,6 @@ public class Searcher {
                 }
                 // find the effective page, which means the words appears in order and form a phrase
                 for(Integer page:CommonMatchedPages){
-                    // 判断后面的词的位置是不是在他的position+1
                     int validphrase=checkPhraseForm(words,page);
                     if(validphrase>0){
                         matchedpages.add(page);
@@ -197,7 +194,6 @@ public class Searcher {
     //check whether the next positions contains the next word
     public Boolean isNextword(int previousPos, String nextWord, int pageId){
         Map<String, List<Integer>> positions = indexerController.forwardIndexer.getBodyKeywordList(pageId);
-//        int wordId = indexerController.getWordIdByWord(nextWord);
         List<Integer> postions = positions.get(nextWord);
         return postions.contains(previousPos+1);
     }
@@ -280,16 +276,16 @@ public class Searcher {
     }
 
 
-    public static void main(String[] args) throws IOException {
-        String initial_url = "https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm";
-//        Spider.fetch(initial_url);
-        IndexerController indexerController1 = Spider.indexer;
-        Searcher searchController = new Searcher(indexerController1);
-        List<SearchResult> searchResults = searchController.search("book");
-        for(SearchResult result:searchResults){
-            System.out.println(result);
-        }
-        indexerController1.close();
-    }
+//    public static void main(String[] args) throws IOException {
+//        String initial_url = "https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm";
+////        Spider.fetch(initial_url);
+//        IndexerController indexerController1 = Spider.indexer;
+//        Searcher searchController = new Searcher(indexerController1);
+//        List<SearchResult> searchResults = searchController.search("book");
+//        for(SearchResult result:searchResults){
+//            System.out.println(result);
+//        }
+//        indexerController1.close();
+//    }
 
 }

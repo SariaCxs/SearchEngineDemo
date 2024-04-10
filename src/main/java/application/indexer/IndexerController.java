@@ -1,7 +1,6 @@
 package application.indexer;
 
 import application.model.Posting;
-import application.model.SearchResult;
 import application.model.Webpage;
 
 import java.io.IOException;
@@ -12,10 +11,9 @@ import java.util.List;
 import java.util.Map;
 
 public class IndexerController {
-    public static int pageCount = 0;
+
     public  int wordCount = 0;
     private final String idDB = "IdDB";
-
 
     public static final String WORD_TO_WORD_ID = "word_to_word_id";
     public static final String URL_TO_PAGE_ID = "url_to_page_id";
@@ -23,12 +21,10 @@ public class IndexerController {
     public static final String COUNT_INFO = "count_info";
     public static final String WEBPAGE_TO_PAGE_RANK_VALUE = "webpage_to_pagerank_value";
 
-//    public static final String PAGE_ID_TO_PAGE_RANK = "page_id_to_page_rank";
     public ForwardIndexer forwardIndexer = new ForwardIndexer();
     public LinkIndexer linkIndexer = new LinkIndexer();
     public InvertedIndexer invertedIndexer = new InvertedIndexer();
     public static IndexDB indexDB;
-    public  IndexerHandler indexerHandler = new IndexerHandler();
 
     public IndexerController() {
         ArrayList<String> indexNames = new ArrayList<>();
@@ -69,6 +65,7 @@ public class IndexerController {
         int pageId = getPageIdByUrl(URL);
         return getWebpageById(pageId);
     }
+
     public void indexPage(Webpage webpage){
         String pageBody = webpage.getText();
         String title = webpage.getTitle();

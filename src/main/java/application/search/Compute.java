@@ -15,12 +15,9 @@ public class Compute {
     public static void calculateTfIdf(String token, HashMap<Integer,Integer> pageIdToTf, Map<Integer, Map<String, Double>> documentVectors) {
         for(Map.Entry<Integer,Integer> entry:pageIdToTf.entrySet()){
             int pageId = entry.getKey();
-            // 通过 pageid 去找这个 page 里出现的最大的 word frequency
             int tfMax = ForwardIndexer.getMaxTFById(pageId);
             double tf = entry.getValue();
-            // 一共有多少个 page 有这个word
             double df = pageIdToTf.size();
-            // 一共有多少个page
             int N = IndexerController.getPageCount();
             double tfIdf = (tf/tfMax) * (Math.log(N/df) / Math.log(2.0));
             documentVectors.computeIfAbsent(pageId, k -> new HashMap<>()).put(token,tfIdf);
@@ -41,6 +38,5 @@ public class Compute {
         return dotProduct / (queryMagnitude * documentMagnitude);
     }
 
-    // cos similarity
 
 }

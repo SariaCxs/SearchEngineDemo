@@ -13,7 +13,8 @@ import java.util.List;
  * Tokenizer
  */
 public class TokenizerHandler {
-    private static StopStem stopStem = new StopStem("C:\\Users\\User\\IdeaProjects\\SearchEngineDemo\\stopwords.txt");
+    private static String rootDir = "C:\\Users\\User\\IdeaProjects\\SearchEngineDemo\\";
+    private static StopStem stopStem = new StopStem(rootDir+"stopwords.txt");
 
     /**
      * Including phrase identification, token stemming and stop words removing
@@ -91,20 +92,20 @@ public class TokenizerHandler {
     }
 
     // Test
-    public static void main(String[] args) {
-        System.out.println(split("The analysising of 25 indexing algorithms has not produced consistent retrieval performance. The best indexing technique for retrieving documents is not known"));
-        System.out.println(stem("The analysising of 25 indexing algorithms has not produced consistent retrieval performance. The best indexing technique for retrieving documents is not known"));
-        System.out.println(stopWords("The analysising of 25 indexing algorithms has not produced consistent retrieval performance. The best indexing technique for retrieving documents is not known"));
-
-        String filePath = "D:\\HKUST23fall\\S2\\CSIT5930 Search Engine and Application\\SE_project\\test.txt"; // Replace with your file path
-        try {
-            String content = new String(Files.readAllBytes(Paths.get(filePath)));
-            List<String> tokens = tokenize(content);
-            System.out.println("Tokens from file: " + tokens);
-        } catch (Exception e) {
-            System.err.println("Error reading from file: " + e.getMessage());
-        }
-    }
+//    public static void main(String[] args) {
+//        System.out.println(split("The analysising of 25 indexing algorithms has not produced consistent retrieval performance. The best indexing technique for retrieving documents is not known"));
+//        System.out.println(stem("The analysising of 25 indexing algorithms has not produced consistent retrieval performance. The best indexing technique for retrieving documents is not known"));
+//        System.out.println(stopWords("The analysising of 25 indexing algorithms has not produced consistent retrieval performance. The best indexing technique for retrieving documents is not known"));
+//
+//        String filePath = "D:\\HKUST23fall\\S2\\CSIT5930 Search Engine and Application\\SE_project\\test.txt"; // Replace with your file path
+//        try {
+//            String content = new String(Files.readAllBytes(Paths.get(filePath)));
+//            List<String> tokens = tokenize(content);
+//            System.out.println("Tokens from file: " + tokens);
+//        } catch (Exception e) {
+//            System.err.println("Error reading from file: " + e.getMessage());
+//        }
+//    }
 
 
 }

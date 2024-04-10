@@ -1,10 +1,8 @@
 package application.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-//doc id frequency a lists of position
 public class Posting implements Serializable {
     int docId;
     int frequency;

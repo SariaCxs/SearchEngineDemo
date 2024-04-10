@@ -20,12 +20,7 @@ public class InvertedIndexer {
         indexDB = new IndexDB(dbName, indexNames);
     }
 
-    /***
-     *
-     * @param webpage
-     * 1. tokenize the text, remove stopwords, stem the words
-     * 2.
-     */
+
     public void indexWebPageBody(int wordId, Posting posting){
         Set<Posting> currentPosting = (Set<Posting>) indexDB.getEntry(WORD_ID_TO_POSTING_BODY, wordId);
         if(currentPosting == null){

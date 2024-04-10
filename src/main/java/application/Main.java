@@ -15,11 +15,9 @@ public class Main {
         //crawling and indexing
         String initialUrl = "https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm";
         Spider.fetch(initialUrl);
-//        logger.info("fetch finished");
-        //calculate page rank value
-//        logger.info("page rank start");
         IndexerController indexer = Spider.indexer;
-//
+
+        //start runing page rank
         List<Integer> pageIds = indexer.getAllPageId();
         Map<Integer, Set<Integer>> childToParentLinks = new HashMap<>();
         Map<Integer, Set<Integer>> parentToChildLinks =new HashMap<>();
@@ -35,6 +33,7 @@ public class Main {
             double pageRankValue = pageRank.getPageRank(pageId);
             indexer.setPageRankValue(pageId,pageRankValue);
         }
+        //store the data
         indexer.close();
     }
 }

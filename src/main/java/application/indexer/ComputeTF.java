@@ -38,43 +38,43 @@ public class ComputeTF {
         return keywordFreqMap;
     }
 
-    public static void main(String[] args) {
-        String filePath = "D:\\HKUST23fall\\S2\\CSIT5930 Search Engine and Application\\SE_project\\test.txt"; // Replace with your actual file path
-
-        // get MaxTF
-        try {
-            // Read the content of the text file
-            String content = new String(Files.readAllBytes(Paths.get(filePath)));
-
-            // Simple word splitting by spaces (this could be improved to handle punctuation)
-            List<String> words = Arrays.asList(content.split("\\s+"));
-
-            // Calculate word positions
-            HashMap<String, List<Integer>> wordPositions = calculateWordPositions(words);
-
-            // Get and print the maximum TF
-            int maxTF = getMaxTF(wordPositions);
-            System.out.println("Maximum TF: " + maxTF);
-
-        } catch (IOException e) {
-            System.err.println("Error reading from file: " + e.getMessage());
-            e.printStackTrace();
-        }
-
-        // weight for word
-        try {
-            String content = new String(Files.readAllBytes(Paths.get(filePath)));
-            List<String> words = Arrays.asList(content.split("\\P{L}+"));
-            HashMap<String, List<Integer>> wordPositions = calculateWordPositions(words);
-            HashMap<String, Integer> keywordFreqMap = getKeywordFreqMap(wordPositions);
-
-            System.out.println("Word Frequencies:");
-            keywordFreqMap.forEach((word, count) -> System.out.println(word + ": " + count));
-        } catch (Exception e) {
-            System.err.println("Error reading file: " + e.getMessage());
-            e.printStackTrace();
-        }
-
-    }
+//    public static void main(String[] args) {
+//        String filePath = "D:\\HKUST23fall\\S2\\CSIT5930 Search Engine and Application\\SE_project\\test.txt"; // Replace with your actual file path
+//
+//        // get MaxTF
+//        try {
+//            // Read the content of the text file
+//            String content = new String(Files.readAllBytes(Paths.get(filePath)));
+//
+//            // Simple word splitting by spaces (this could be improved to handle punctuation)
+//            List<String> words = Arrays.asList(content.split("\\s+"));
+//
+//            // Calculate word positions
+//            HashMap<String, List<Integer>> wordPositions = calculateWordPositions(words);
+//
+//            // Get and print the maximum TF
+//            int maxTF = getMaxTF(wordPositions);
+//            System.out.println("Maximum TF: " + maxTF);
+//
+//        } catch (IOException e) {
+//            System.err.println("Error reading from file: " + e.getMessage());
+//            e.printStackTrace();
+//        }
+//
+//        // weight for word
+//        try {
+//            String content = new String(Files.readAllBytes(Paths.get(filePath)));
+//            List<String> words = Arrays.asList(content.split("\\P{L}+"));
+//            HashMap<String, List<Integer>> wordPositions = calculateWordPositions(words);
+//            HashMap<String, Integer> keywordFreqMap = getKeywordFreqMap(wordPositions);
+//
+//            System.out.println("Word Frequencies:");
+//            keywordFreqMap.forEach((word, count) -> System.out.println(word + ": " + count));
+//        } catch (Exception e) {
+//            System.err.println("Error reading file: " + e.getMessage());
+//            e.printStackTrace();
+//        }
+//
+//    }
 }
 

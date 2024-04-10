@@ -18,38 +18,18 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
 
 
 public class Spider
 {
-//    public static StringExtractor stringExtractor = new StringExtractor();
-//
-//    public static LinkExtractor linkExtractor = new LinkExtractor();
 
     public static IndexerController indexer = new IndexerController();
 
-    public static boolean isValid(String url)
-    {
-        /* Try creating a valid URL */
-        try {
-            new URL(url).toURI();
-            return true;
-        }
-
-        // If there was an Exception
-        // while creating URL object
-        catch (Exception e) {
-            return false;
-        }
-    }
 
     public static Date getLastModifiedDate(String _url) throws IOException {
         URL u = new URL(_url);
         URLConnection connection = u.openConnection();
         Date date = new Date(connection.getLastModified());
-
         return date;
     }
     public static int getPageSize(String _url) throws IOException {
@@ -61,7 +41,6 @@ public class Spider
         String temp = "";
         while((input = b.readLine())!=null)
             temp += input;
-
 
         b.close();
         return temp.length();
@@ -135,7 +114,6 @@ public class Spider
                 // iterate the child urls by BFS
 //                extract links from current webpage
                 Elements links = doc.select("a[href]");
-//                Vector<String> links = linkExtractor.extractLinks(url);
                 System.out.println("size: "+links.size());
                 //iterate the child link to perform breadth first search, and set up the child and parent relationship
 
@@ -163,53 +141,50 @@ public class Spider
         } catch (Exception e) {
             e.printStackTrace ();
         }
-//        finally {
-//            indexer.close();
-//        }
 
     }
 
 
 
-    public static void main(String[] args) throws IOException {
-        String initial_url = "https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm";
+//    public static void main(String[] args) throws IOException {
+//        String initial_url = "https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm";
 //        Spider.fetch(initial_url);
-
-        //test function
-        System.out.println("FINISHED fetching");
-        int pageId =2;
-        System.out.println("webpage information\n"+indexer.getWebpageById(pageId));
-        //test forwardIndexer
-        System.out.println("maxTF: "+indexer.forwardIndexer.getMaxTFById(pageId));
-        System.out.println("body keyword list: "+indexer.forwardIndexer.getBodyKeywordList(pageId));
-        System.out.println("title keyword list: "+indexer.forwardIndexer.getTitleKeywordList(pageId));
-        //test invertedindex
-        HashMap<String, List<Integer>> keywordlist = indexer.forwardIndexer.getBodyKeywordList(pageId);
-        for(Map.Entry<String, List<Integer>> entry: keywordlist.entrySet()){
-            int wordId = indexer.getWordIdByWord(entry.getKey());
-            Set<Posting> postings = indexer.invertedIndexer.getPostingBody(wordId);
-            System.out.println("word:"+wordId);
-            for(Posting posting:postings){
-                System.out.println(posting.getDocId());
-                System.out.println(posting.getFrequency());
-                System.out.println(posting.getPositions());
-            }
-        }
-
-        //test linkindex
-        System.out.println(indexer.getParentLinksByPageId(2));
-        System.out.println(indexer.getChildLinksByPageId(2));
-        //test delete webpage
-        System.out.print("DELETE page 4");
-        indexer.deleteWebpage(3);
-        for(Map.Entry<String, List<Integer>> entry: keywordlist.entrySet()){
-            int wordId = indexer.getWordIdByWord(entry.getKey());
-            Set<Posting> postings = indexer.invertedIndexer.getPostingBody(pageId);
-            if(postings == null){
-                System.out.print(wordId);
-            }
-        }
+//
+//        //test function
+//        System.out.println("FINISHED fetching");
+//        int pageId =2;
+//        System.out.println("webpage information\n"+indexer.getWebpageById(pageId));
+//        //test forwardIndexer
+//        System.out.println("maxTF: "+indexer.forwardIndexer.getMaxTFById(pageId));
+//        System.out.println("body keyword list: "+indexer.forwardIndexer.getBodyKeywordList(pageId));
+//        System.out.println("title keyword list: "+indexer.forwardIndexer.getTitleKeywordList(pageId));
+//        //test invertedindex
+//        HashMap<String, List<Integer>> keywordlist = indexer.forwardIndexer.getBodyKeywordList(pageId);
+//        for(Map.Entry<String, List<Integer>> entry: keywordlist.entrySet()){
+//            int wordId = indexer.getWordIdByWord(entry.getKey());
+//            Set<Posting> postings = indexer.invertedIndexer.getPostingBody(wordId);
+//            System.out.println("word:"+wordId);
+//            for(Posting posting:postings){
+//                System.out.println(posting.getDocId());
+//                System.out.println(posting.getFrequency());
+//                System.out.println(posting.getPositions());
+//            }
+//        }
+//
+//        //test linkindex
+//        System.out.println(indexer.getParentLinksByPageId(2));
+//        System.out.println(indexer.getChildLinksByPageId(2));
+//        //test delete webpage
+//        System.out.print("DELETE page 4");
+//        indexer.deleteWebpage(3);
+//        for(Map.Entry<String, List<Integer>> entry: keywordlist.entrySet()){
+//            int wordId = indexer.getWordIdByWord(entry.getKey());
+//            Set<Posting> postings = indexer.invertedIndexer.getPostingBody(pageId);
+//            if(postings == null){
+//                System.out.print(wordId);
+//            }
+//        }
 //        Spider.indexer.close();
-    }
+//    }
 
 }

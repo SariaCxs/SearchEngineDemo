@@ -17,7 +17,8 @@ public class IndexDB {
     private HashMap<String, HTree> maps = new HashMap<>();
     public IndexDB(String DBName, ArrayList<String> indexNames) {
         try {
-            recman = RecordManagerFactory.createRecordManager("C:\\Users\\User\\IdeaProjects\\SearchEngineDemo\\"+DBName);
+            String root_dir = "C:\\Users\\User\\IdeaProjects\\SearchEngineDemo\\";
+            recman = RecordManagerFactory.createRecordManager(root_dir+DBName);
             for(int i =0;i<indexNames.toArray().length;i++){
                 String name = indexNames.get(i);
                 HTree hashtable;
@@ -38,7 +39,6 @@ public class IndexDB {
 
     }
 
-    //word to word_id, url to pageid, wordid to postinglist, wordid to posting list of title, page id to page info
     public void addEntry(String indexName, Object key, Object value)
     {
         try {
@@ -76,6 +76,7 @@ public class IndexDB {
             System.out.printf("Error deleting entry of index %s; %s", indexName, e.getMessage());
         }
     }
+
 
     public List<Object> getAllValues(String indexName) throws IOException {
         List<Object> res = new ArrayList<>();

@@ -1,11 +1,7 @@
 package application.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
-/**
- * Save some useful page information when crawling, including title, url, lastModified data, page size, tfMax
- */
 public class Webpage implements Serializable {
     private String title;
     private String url;
@@ -15,7 +11,6 @@ public class Webpage implements Serializable {
 
     private  String text;
 
-    public Webpage(){}
     public Webpage(String text, String title, String url, String lastModifiedDate, int pageSize){
         this.title = title;
         this.url = url;
