@@ -50,11 +50,11 @@
 
 * Configuration on IDEA
 
-![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/initial.png))
+![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/initial.png))
 
 * Modify `URL`  and click `Deploy application configured in Tomcat instance`
 
-![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/config.png))
+![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/config.png))
 
 
 
@@ -62,44 +62,44 @@
 
 In IntelliJ IDEA, find the **Main class** and run it to perform crawling and indexing, and calculating page rank value.
 
-![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/main.png))
+![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/main.png)
 
-![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/finish_fetching.png))
+![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/finish_fetching.png)
 
 After fetching 304 webpages, the index files are stored under the root directory of the project. 
 
-![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/db.png))
+![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/db.png)
 
 When we start the Tomcat for deployment, the server will only read file in the `bin` directory of the installment path of Tomcat. To make sure that the `index` files and `stopwords` file can be read, you need to change two the directory in two file, `indexer/IndexDB` and `utils/TokenizerHandler`.
 
-![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/indedb.png))
+![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/indedb.png)
 
-![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/stopwords.png))
+![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/stopwords.png)
 
 Start the tomcat server for searching
 
 Initial page 
 
-![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/initial.png))
+![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/initial.png)
 
 Searching result 
 
-![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/book.png))
+![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/book.png)
 
 ## Search examples
 
 1. Input `Magical Rescue` for testing title favor
 
-![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/Magical Rescue.png))
+![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/Magical Rescue.png)
 
 2. Input `"computer science"` for testing phrase search
 
    We use double quota to indicate recognizing the content inside as a phrase.
 
-   ![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/computer science.png))
+   ![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/computer science.png)
 
 3. Input `movie`s for testing the PageRank 
 
    There are many pages pointing to the webpage that ranks first.
 
-![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/movies.png))
+![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/movies.png)
