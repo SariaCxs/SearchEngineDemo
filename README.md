@@ -50,11 +50,11 @@
 
 * Configuration on IDEA
 
-<img src="C:\Users\User\AppData\Roaming\Typora\typora-user-images\image-20240410222900320.png" alt="image-20240410222900320" style="zoom: 50%;" />
+![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/initial.png))
 
 * Modify `URL`  and click `Deploy application configured in Tomcat instance`
 
-<img src="C:\Users\User\AppData\Roaming\Typora\typora-user-images\image-20240417110458687.png" alt="image-20240417110458687" style="zoom:50%;" />
+![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/config.png))
 
 
 
@@ -62,44 +62,44 @@
 
 In IntelliJ IDEA, find the **Main class** and run it to perform crawling and indexing, and calculating page rank value.
 
-<img src="C:\Users\User\AppData\Roaming\Typora\typora-user-images\image-20240410223312080.png" alt="image-20240410223312080" style="zoom:50%;" />
+![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/main.png))
 
-<img src="C:\Users\User\AppData\Roaming\Typora\typora-user-images\image-20240410233702276.png" alt="image-20240410233702276" style="zoom:50%;" />
+![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/finish_fetching.png))
 
 After fetching 304 webpages, the index files are stored under the root directory of the project. 
 
-<img src="C:\Users\User\AppData\Roaming\Typora\typora-user-images\image-20240417131933633.png" alt="image-20240417131933633" style="zoom:50%;" />
+![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/db.png))
 
 When we start the Tomcat for deployment, the server will only read file in the `bin` directory of the installment path of Tomcat. To make sure that the `index` files and `stopwords` file can be read, you need to change two the directory in two file, `indexer/IndexDB` and `utils/TokenizerHandler`.
 
-<img src="C:\Users\User\AppData\Roaming\Typora\typora-user-images\image-20240417101104907.png" alt="image-20240417101104907" style="zoom:50%;" />
+![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/indedb.png))
 
-![image-20240417101135317](C:\Users\User\AppData\Roaming\Typora\typora-user-images\image-20240417101135317.png)
+![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/stopwords.png))
 
 Start the tomcat server for searching
 
 Initial page 
 
-<img src="C:\Users\User\Documents\WeChat Files\wxid_wicg1dy8nxmo12\FileStorage\Temp\22845195dfd799fdd96cb4ca54bbf39.png" alt="22845195dfd799fdd96cb4ca54bbf39" style="zoom: 33%;" />
+![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/initial.png))
 
 Searching result 
 
-![2f94a338c242a43898b8fde71c3b012](C:\Users\User\Documents\WeChat Files\wxid_wicg1dy8nxmo12\FileStorage\Temp\2f94a338c242a43898b8fde71c3b012.png)
+![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/book.png))
 
 ## Search examples
 
 1. Input `Magical Rescue` for testing title favor
 
-   ![3451305454d5d05c31977765e93ed6f](C:\Users\User\Documents\WeChat Files\wxid_wicg1dy8nxmo12\FileStorage\Temp\3451305454d5d05c31977765e93ed6f.png)
+![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/Magical Rescue.png))
 
 2. Input `"computer science"` for testing phrase search
 
    We use double quota to indicate recognizing the content inside as a phrase.
 
-   ![5daa5c56e28683061a1e7b61bfa9e39](C:\Users\User\Documents\WeChat Files\wxid_wicg1dy8nxmo12\FileStorage\Temp\5daa5c56e28683061a1e7b61bfa9e39.png)
+   ![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/computer science.png))
 
 3. Input `movie`s for testing the PageRank 
 
    There are many pages pointing to the webpage that ranks first.
 
-   ![953cce06bdb627d8b4470230f46d870](C:\Users\User\Documents\WeChat Files\wxid_wicg1dy8nxmo12\FileStorage\Temp\953cce06bdb627d8b4470230f46d870.png)
+![image]([https://github.com/lexsaints/powershell/blob/master/IMG/ps2.png](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/movies.png))
