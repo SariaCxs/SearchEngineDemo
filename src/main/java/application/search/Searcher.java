@@ -123,6 +123,9 @@ public class Searcher {
                 HashSet<Integer> intersectPages = findIntersection(words);
                 //get posting of each word with the page id
                 //use positions in posting list to check whether a valid phrase
+                for(Integer pageId: intersectPages){
+                    System.out.println(pageId);
+                }
                 if(!intersectPages.isEmpty()){
                     HashMap<Integer, Integer> pageIdTF = buildPostingForPhrase(words, intersectPages);
                     Compute.calculateTfIdf(token, pageIdTF, documentVectors);
@@ -131,10 +134,12 @@ public class Searcher {
             else{
                 //get posting lists
                 Map<Integer, Integer> postings = getPostingList(token);
-                //calcualte TF in each page
-                HashMap<Integer, Integer> pageIdTF = getPageIdAndTF(postings);
-                //get tfxidf / tfmax
-                Compute.calculateTfIdf(token, pageIdTF,documentVectors);
+                if (postings!=null) {
+                    //calcualte TF in each page
+                    HashMap<Integer, Integer> pageIdTF = getPageIdAndTF(postings);
+                    //get tfxidf / tfmax
+                    Compute.calculateTfIdf(token, pageIdTF, documentVectors);
+                }
             }
         }
         return documentVectors;
@@ -156,16 +161,25 @@ public class Searcher {
                     results.retainAll(pageIds);
                 }
             }
+            else{
+                System.out.println("not in database "+word);
+                return  new HashSet<>();
+            }
         }
         return results;
     }
     //pageIDTF
     public HashMap<Integer, Integer> buildPostingForPhrase(List<String> words, HashSet<Integer> pageIds){
         HashMap<Integer, Integer> postings = new HashMap<>();
+        System.out.println(words);
         for(Integer pageId:pageIds){
             int wordId = indexerController.getWordIdByWord(words.get(0));
             //get keywordlist of the pageId
             Map<String, List<Integer>> positions = indexerController.forwardIndexer.getBodyKeywordList(pageId);
+            for(Map.Entry<String, List<Integer>> obj:positions.entrySet()){
+                System.out.println(obj.getKey());
+                System.out.println(obj.getValue());
+            }
             List<Integer> positionsOfFirst = positions.get(words.get(0));
             int phraseCount = 0;
             //input the position of previous word, the next word
@@ -276,16 +290,16 @@ public class Searcher {
     }
 
 
-//    public static void main(String[] args) throws IOException {
-//        String initial_url = "https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm";
-////        Spider.fetch(initial_url);
-//        IndexerController indexerController1 = Spider.indexer;
-//        Searcher searchController = new Searcher(indexerController1);
-//        List<SearchResult> searchResults = searchController.search("book");
-//        for(SearchResult result:searchResults){
-//            System.out.println(result);
-//        }
+    public static void main(String[] args) throws IOException {
+        String initial_url = "https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm";
+//        Spider.fetch(initial_url);
+        IndexerController indexerController1 = Spider.indexer;
+        Searcher searchController = new Searcher(indexerController1);
+        List<SearchResult> searchResults = searchController.search("\"take-home message\"");
+        for(SearchResult result:searchResults){
+            System.out.println(result);
+        }
 //        indexerController1.close();
-//    }
+    }
 
 }

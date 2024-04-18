@@ -26,4 +26,6 @@ public class Posting implements Serializable {
         return positions;
     }
 
+
+
 }

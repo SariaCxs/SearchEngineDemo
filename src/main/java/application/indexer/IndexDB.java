@@ -92,6 +92,12 @@ public class IndexDB {
         return res;
     }
 
+    public HTree getHashtable(String indexName) throws IOException {
+        List<Object> res = new ArrayList<>();
+        HTree hashtable = maps.get(indexName);
+        return hashtable;
+    }
+
 
     public void close() throws IOException {
         recman.commit();

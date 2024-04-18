@@ -1,10 +1,13 @@
 package application.indexer;
 
 import application.model.Posting;
+import jdbm.helper.FastIterator;
+import jdbm.htree.HTree;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class InvertedIndexer {
@@ -29,6 +32,7 @@ public class InvertedIndexer {
         currentPosting.add(posting);
         indexDB.addEntry(WORD_ID_TO_POSTING_BODY, wordId, currentPosting);
     }
+
 
     public void indexWebPageTitle(int wordId, Posting postingTitle){
         Set<Posting> currentPosting = (Set<Posting>) indexDB.getEntry(WORD_ID_TO_POSTING_TITLE, wordId);
