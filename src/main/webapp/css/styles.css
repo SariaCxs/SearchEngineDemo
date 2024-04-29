@@ -1,0 +1,82 @@
+/* styles.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    text-align: left;
+    position: relative;
+    min-height: 100%;
+}
+
+.top-background {
+    background: url('../static/cloud.jpeg') no-repeat center center;
+    background-size: cover;
+    height: 30vh; 
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+
+.search-box {
+    position: absolute;
+    top: 16vh; /* Adjust this value to center the box in the top background */
+    left: 40%; /* Start from half the width of the page */
+    transform: translate(-50%, -50%); /* Center the box horizontally */
+    z-index: 2;
+}
+
+.search-input {
+    width: 300%; /* Decrease the width to shorten the length of the input box */
+    max-width: 600px; /* You can also set a max-width */
+    padding: 12px 20px; /* Adjust padding as needed */
+    font-size: 16px; /* Adjust font size as needed */
+    border-radius: 25px; /* Rounded corners */
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd; /* Optional: adds a subtle border */
+    outline: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+    z-index: 2;
+    padding-top: 35vh; 
+    margin-left: 20px;
+    margin-right: 20px; /* Ensure the content does not stretch too wide */
+}
+
+.result-item {
+    margin-bottom: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.hidden-links {
+    display: none;
+}
+.show-more {
+    color: blue;
+    cursor: pointer;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8em;
+    color: black;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px 0;
+}
+
+.hkust-logo {
+    position: absolute;
+    top: 14vh; /* Adjust as needed to move the logo up or down */
+    left: 28%; /* Center the logo horizontally */
+    transform: translate(-50%, -50%); /* Adjust horizontal and vertical centering */
+    width: 45px; /* Set the width of the logo */
+    z-index: 3; /* Ensure logo is above the top background image */
+}
