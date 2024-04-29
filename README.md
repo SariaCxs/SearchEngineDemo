@@ -90,16 +90,16 @@ Searching result
 
 1. Input `Magical Rescue` for testing title favor
 
-![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/Magical Rescue.png)
+![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/Magical_Rescue.png)
 
 2. Input `"computer science"` for testing phrase search
 
    We use double quota to indicate recognizing the content inside as a phrase.
 
-   ![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/computer science.png)
+   ![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/computer_science.png)
 
 3. Input `movie`s for testing the PageRank 
 
    There are many pages pointing to the webpage that ranks first.
 
-![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/movies.png)
+   ![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/movies.png)
