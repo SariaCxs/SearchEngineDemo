@@ -11,6 +11,16 @@ public class SearchResult {
     private Set<String> parentLinks;
     private Set<String> childLinks;
 
+    private String summary;
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
     public void setScore(String score) {
         this.score = score;
     }

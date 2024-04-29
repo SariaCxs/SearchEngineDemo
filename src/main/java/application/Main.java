@@ -14,13 +14,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
         //crawling and indexing
         String initialUrl = "https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm";
-//        long startTime=System.currentTimeMillis();
-//        Spider.fetch(initialUrl);
-//        long endTime=System.currentTimeMillis();
-//        System.out.println("fetch time:"+(endTime-startTime)+"ms");
-//        logger.info("fetch finished");
-        //calculate page rank value
-//        logger.info("page rank start");
+        long startTime=System.currentTimeMillis();
+        Spider.fetch(initialUrl);
+        long endTime=System.currentTimeMillis();
+        System.out.println("fetch time:"+(endTime-startTime)+"ms");
         IndexerController indexer = Spider.indexer;
 //
         List<Integer> pageIds = indexer.getAllPageId();
