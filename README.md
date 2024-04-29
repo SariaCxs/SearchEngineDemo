@@ -72,7 +72,7 @@ After fetching 304 webpages, the index files are stored under the root directory
 
 When we start the Tomcat for deployment, the server will only read file in the `bin` directory of the installment path of Tomcat. To make sure that the `index` files and `stopwords` file can be read, you need to change two the directory in two file, `indexer/IndexDB` and `utils/TokenizerHandler`.
 
-![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/indedb.png)
+![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/indexdb_dir.png)
 
 ![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/stopwords.png)
 
