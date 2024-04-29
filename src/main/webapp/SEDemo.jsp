@@ -53,6 +53,7 @@
 //                out.println("<span>" + (i + 1) + ". </span>"+result.getUrl()+"");
                 out.println("<h3>" + (i + 1) + ". "+ result.getTitle()+"</h3>");
                 out.println("<a href="+result.getUrl()+">"+result.getUrl()+"</a>");
+                out.println("<p style=\"font-family: Times New Roman, serif; font-size: 13px;color: gray\">"+result.getSummary()+"</p>");
                 StringBuilder keywords = new StringBuilder();
                 for (HashMap.SimpleEntry entry : result.getTop5Keywords()) {
                     String word = (String) entry.getKey();
