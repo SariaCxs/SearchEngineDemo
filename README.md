@@ -50,9 +50,9 @@
 
 * Configuration on IDEA
 ![tomcat](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/bb487348-bc50-4df2-a1da-38fd3cd10308)
-* Modify `URL`  and click `Deploy application configured in Tomcat instance`
+* Modify `URL`  as belows with the same URL and click `Deploy application configured in Tomcat instance`
 ![config](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/5cd0a570-5e33-4303-8086-96636a629612)
-* add the application when the server stars in the Deployment
+* Add the application when the server starts in the Deployment
 ![image](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/26b1f09f-a22f-4a1e-8394-a58e5986aece)
 
 
@@ -70,7 +70,7 @@ Find the **Main class** and run it to perform crawling and indexing, and calcula
 ![main](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/b9071d44-c186-4bf8-8e6f-2a9e6739f4ab)
 ![finish_fetching](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/897b4aa5-b8a1-44f5-81b4-2c2f3535e427)
 
-After fetching 304 webpages, the index files are stored under the root directory of the project. 
+After fetching 297 webpages, the index files are stored under the directory you set.
 
 ![db](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/a1ea9efb-2e9e-4a5e-bf76-c0d62d3361c1)
 
@@ -92,15 +92,15 @@ Searching result
 
 2. Input `"international news"` for testing phrase search (double quotes to detect a phrase)
 
-   Search results without double quotes for internation news
+   Search results without double quotes for international news
    
    ![image](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/92aa243b-1ff7-44b5-bf2c-759e27b3022a)
    
-   Search results with double quotes for internation news
+   Search results with double quotes for international news
 
    ![image](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/365e793b-9490-45b8-b57c-ef1b8a4c5000)
 
-4. Input `movie`s for testing the PageRank 
+4. Input `movies` for testing the PageRank 
 
    There are many pages pointing to the webpage that ranks first.
 
