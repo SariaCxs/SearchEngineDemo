@@ -204,6 +204,15 @@ public class IndexerController {
         return pageIdsList;
     }
 
+    public List<String> getAllWord() throws IOException {
+        List<Object> objectList = indexDB.getAllKeys(WORD_TO_WORD_ID);
+        List<String> wordList = new ArrayList<>();
+        for (Object object : objectList) {
+            wordList.add((String) object);
+        }
+        return wordList;
+    }
+
     public Set<Integer> getParentIdsByPageId(int pageId) {
         return linkIndexer.getLinkIdsByPageId(LinkIndexer.PAGE_ID_TO_PARENT_ID, pageId);
     }

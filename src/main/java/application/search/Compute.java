@@ -24,19 +24,27 @@ public class Compute {
         }
     }
 
-    public static double calculateCosineSimilarity(List<String> queryKeywords, Map<String, Double> documentVector) {
+
+    public static double calculateCosineSimilarity(List<String> queryKeywords, Map<String, Double> documentVector,  Map<String ,Double> bodyWeights) {
         double queryMagnitude = Math.sqrt(queryKeywords.size());
         double documentMagnitude = 0.0;
         double dotProduct = 0.0;
 
-        for(String token: documentVector.keySet()){
-            double weights = documentVector.get(token);
+        for(String token: bodyWeights.keySet()){
+            double weights = bodyWeights.get(token);
             documentMagnitude += weights * weights;
-            dotProduct += weights;
+        }
+        for(String token: queryKeywords){
+            if(documentVector.keySet().contains(token)) {
+                dotProduct += documentVector.get(token);
+            }
         }
         documentMagnitude = Math.sqrt(documentMagnitude);
         return dotProduct / (queryMagnitude * documentMagnitude);
     }
+
+    //String TF idf
+
 
 
 }

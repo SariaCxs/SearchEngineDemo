@@ -42,6 +42,7 @@ public class TokenizerHandler {
                 // Remove stop words
                 if (!stopStem.isStopWord(token)) {
                     // Perform stemming
+                    System.out.println("not stopwords "+token);
                     token = stopStem.stem(token);
                     queryTokens.add(token);
                 }
@@ -92,11 +93,11 @@ public class TokenizerHandler {
     }
 
     // Test
-//    public static void main(String[] args) {
+    public static void main(String[] args) {
 //        System.out.println(split("The analysising of 25 indexing algorithms has not produced consistent retrieval performance. The best indexing technique for retrieving documents is not known"));
 //        System.out.println(stem("The analysising of 25 indexing algorithms has not produced consistent retrieval performance. The best indexing technique for retrieving documents is not known"));
-//        System.out.println(stopWords("The analysising of 25 indexing algorithms has not produced consistent retrieval performance. The best indexing technique for retrieving documents is not known"));
-//
+//        System.out.println(tokenize("The analysising of 25 indexing algorithms has not produced consistent retrieval performance. The best indexing technique for retrieving documents is not known"));
+
 //        String filePath = "D:\\HKUST23fall\\S2\\CSIT5930 Search Engine and Application\\SE_project\\test.txt"; // Replace with your file path
 //        try {
 //            String content = new String(Files.readAllBytes(Paths.get(filePath)));
@@ -105,7 +106,7 @@ public class TokenizerHandler {
 //        } catch (Exception e) {
 //            System.err.println("Error reading from file: " + e.getMessage());
 //        }
-//    }
+    }
 
 
 }
