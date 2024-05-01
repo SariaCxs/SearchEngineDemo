@@ -17,7 +17,7 @@ public class IndexDB {
     private HashMap<String, HTree> maps = new HashMap<>();
     public IndexDB(String DBName, ArrayList<String> indexNames) {
         try {
-            String root_dir = "C:\\Users\\User\\IdeaProjects\\SearchEngineDemo\\";
+            String root_dir = "C:\\Users\\User\\Documents\\SearchEngineDemo\\";
             recman = RecordManagerFactory.createRecordManager(root_dir+DBName);
             for(int i =0;i<indexNames.toArray().length;i++){
                 String name = indexNames.get(i);
@@ -83,6 +83,20 @@ public class IndexDB {
         HTree hashtable = maps.get(indexName);
         if(hashtable != null){
             FastIterator iter = hashtable.values();
+            Object word = iter.next();
+            while ( word != null ) {
+                res.add(word);
+                word = iter.next();
+            }
+        }
+        return res;
+    }
+
+    public List<Object> getAllKeys(String indexName) throws IOException {
+        List<Object> res = new ArrayList<>();
+        HTree hashtable = maps.get(indexName);
+        if(hashtable != null){
+            FastIterator iter = hashtable.keys();
             Object word = iter.next();
             while ( word != null ) {
                 res.add(word);

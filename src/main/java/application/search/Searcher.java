@@ -123,16 +123,13 @@ public class Searcher {
     public Map<Integer, Map<String, Double>> calculateWeights(List<String> queryTokens) {
         Map<Integer, Map<String, Double>> documentVectors = new HashMap<>();
         for (String token : queryTokens) {
-            //procee phrases
+            //process phrases
             if (token.contains(" ")) {
                 List<String> words = TokenizerHandler.tokenize(token);
                 //find all page that contains all the tokens - > a set of page id
                 HashSet<Integer> intersectPages = findIntersection(words);
                 //get posting of each word with the page id
                 //use positions in posting list to check whether a valid phrase
-//                for(Integer pageId: intersectPages){
-//                    System.out.println(indexerController.getWebpageById(pageId).getUrl());
-//                }
                 if (!intersectPages.isEmpty()) {
                     HashMap<Integer, Integer> pageIdTF = buildPostingForPhrase(words, intersectPages);
                     Compute.calculateTfIdf(token, pageIdTF, documentVectors);
@@ -140,12 +137,12 @@ public class Searcher {
             } else {
                 //get posting lists
                 Map<Integer, Integer> postings = getPostingList(token);
-                if (postings != null) {
-                    //calcualte TF in each page
-                    HashMap<Integer, Integer> pageIdTF = getPageIdAndTF(postings);
-                    //get tfxidf / tfmax
-                    Compute.calculateTfIdf(token, pageIdTF, documentVectors);
+                for(Integer pageId:postings.keySet()){
+                    Map<String ,Double> bodyWeights = indexerController.forwardIndexer.getBodyKeywordWights(pageId);
+
+                    documentVectors.computeIfAbsent(pageId, k -> new HashMap<>()).put(token,bodyWeights.get(token));
                 }
+
             }
         }
         return documentVectors;
@@ -171,7 +168,6 @@ public class Searcher {
                     return new HashSet<>();
                 }
             } else {
-                System.out.println("not in database " + word);
                 return new HashSet<>();
             }
         }
@@ -258,11 +254,18 @@ public class Searcher {
         Set<Integer> visitedId = new HashSet<>();
         for (Map.Entry<Integer, Map<String, Double>> entry : documentVectors.entrySet()) {
             int pageId = entry.getKey();
+            System.out.println(pageId);
+            System.out.println(indexerController.getWebpageById(pageId).getUrl());
+
             visitedId.add(pageId);
             Map<String, Double> weights = entry.getValue();
-            double cosineSimilarity = Compute.calculateCosineSimilarity(queryTokens, weights);
+            System.out.println(weights);
+            Map<String ,Double> bodyWeights = indexerController.forwardIndexer.getBodyKeywordWights(pageId);
+            double cosineSimilarity = Compute.calculateCosineSimilarity(queryTokens, weights, bodyWeights);
             double pageRankValue = indexerController.getPageRankValue(pageId);
             double score = (0.3 * cosineSimilarity + 0.7 * pageRankValue + 1);
+            System.out.println(cosineSimilarity);
+            System.out.println(pageRankValue);
             if (titleMatched.contains(pageId)) {
                 score *= TITLE_BOOST;
             }
@@ -395,7 +398,7 @@ public class Searcher {
             searchResult.setParentLinks(indexerController.getParentLinksByPageId(pageId));
             searchResult.setScore(String.format("%.4f", pageEntry.getValue()));
             String summary = getSummary(queryTokens, webpage);
-            System.out.println("summary "+summary);
+//            System.out.println("summary "+summary);
             searchResult.setSummary(summary);
             results.add(searchResult);
         }
@@ -404,25 +407,11 @@ public class Searcher {
 
 
     public static void main(String[] args) throws IOException {
-        String initial_url = "https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm";
-//        Spider.fetch(initial_url);
-        String query = "cnn";
-
-        List<String> queryTokens = TokenizerHandler.tokenize(query);
-//        System.out.println(queryTokens);
+        //test searcher
         IndexerController indexerController1 = Spider.indexer;
-//        int wordId = indexerController1.getWordIdByWord("search");
-//        Set<Posting> postings = indexerController1.invertedIndexer.getPostingBody(wordId);
-//        for(Posting posting:postings){
-//            int pageId = posting.getDocId();
-//            System.out.println(indexerController1.getWebpageById(pageId).getUrl());
-//        }
 
         Searcher searchController = new Searcher(indexerController1);
-        List<SearchResult> searchResults = searchController.search("\"magical rescue\"");
-//        for(SearchResult result:searchResults){
-//            System.out.println(result);
-//        }
+        List<SearchResult> searchResults = searchController.search("Magical rescue");
         indexerController1.close();
     }
 
