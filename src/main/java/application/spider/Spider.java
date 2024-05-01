@@ -55,13 +55,14 @@ public class Spider
             int n = 0;
             Map dict = new HashMap();
             //clear pageCount
-            indexer.indexDB.addEntry("count_info","pageCount",0);
-            indexer.indexDB.addEntry("count_info","wordCount",0);
+            if(IndexerController.getPageCount()==0){
+                indexer.indexDB.addEntry("count_info","pageCount",0);
+                indexer.indexDB.addEntry("count_info","wordCount",0);
+            }
             //Data structure for breadfirst search: visited_list, queue
             ArrayList<String> visited_urls = new ArrayList<String>();
             Queue<String> queue = new LinkedList<String>();
             queue.offer(initial_url);
-
             dict.put(initial_url,pageID);
 
             //start breadthfirst search
@@ -80,9 +81,9 @@ public class Spider
                 if(url == null){
                     return;
                 }
-                Object current_pageID = dict.get(url);
-                System.out.println("Current PageID: " + current_pageID);
-                System.out.println("Current URL: " + url);
+//                Object current_pageID = indexer.getWebpageByURL(url);
+//                System.out.println("Current PageID: " + current_pageID);
+//                System.out.println("Current URL: " + url);
 
 
                 //use jsoup to extract title, text and last modified date
@@ -97,7 +98,7 @@ public class Spider
                 Webpage webPage = new Webpage(cleaned_texts, cleaned_titles, url,dates, getPageSize(url));
 
                 Webpage oldPage = indexer.getWebpageByURL(url);
-                indexer.updatedPageCount(1);
+
                 if (oldPage!=null){
                     String old_date = oldPage.getLastModifiedDate();
                     // check last_modified_date
@@ -107,16 +108,17 @@ public class Spider
                 }
                 else {
                     // index the page
-                    n++;
                     indexer.indexPage(webPage);
                 }
-
+                int current_pageID = indexer.getPageIdByUrl(url);
+                System.out.println("Current PageID: " + current_pageID);
+                System.out.println("Current URL: " + url);
+                n += 1;
                 // iterate the child urls by BFS
-//                extract links from current webpage
+//              extract links from current webpage
                 Elements links = doc.select("a[href]");
                 System.out.println("size: "+links.size());
                 //iterate the child link to perform breadth first search, and set up the child and parent relationship
-
                 for(Element ele : links) {
                     try {
                         String link = ele.attr("abs:href");
@@ -125,15 +127,16 @@ public class Spider
                             continue;
                         }
                         String child = link;
-                        pageID++;
-                        dict.put(child, pageID);
+//                        pageID++;
+//                        dict.put(child, pageID);
                         queue.offer(child);
                         // add parent and child urls
                         indexer.addChildLinks(url, link);
                         indexer.addParentLink(link, url);
                     }
-
-                    catch(Exception e){}
+                    catch(Exception e){
+                        System.out.println(e);
+                    }
 
                 }
 
@@ -146,11 +149,11 @@ public class Spider
 
 
 
-//    public static void main(String[] args) throws IOException {
-//        String initial_url = "https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm";
-//        Spider.fetch(initial_url);
+    public static void main(String[] args) throws IOException {
+        String initial_url = "https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm";
+        Spider.fetch(initial_url);
 
-        //test function
+//        test function
 //        System.out.println("FINISHED fetching");
 //        int pageId =2;
 //        System.out.println("webpage information\n"+indexer.getWebpageById(pageId));
@@ -185,7 +188,7 @@ public class Spider
 //            }
 //        }
 //        Spider.indexer.close();
-        //get statistic
+//        get statistic
 //        List<Integer> pageIds = indexer.getAllPageId();
 //        try {
 //            FileWriter write=new FileWriter("C:\\Users\\User\\Desktop\\fileSize.txt");
@@ -202,9 +205,9 @@ public class Spider
 //        }catch(IOException e){
 //            e.printStackTrace();
 //        }
-//
 
-//    }
+
+    }
 
 
 }

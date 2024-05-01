@@ -28,9 +28,6 @@ public class Searcher {
         Map<Integer, Map<String, Double>> documentVectors = calculateWeights(queryTokens);
         //get all title matched pages: Set<Integer>
         Set<Integer> titleMatched = PagesMatchedInTitle(queryTokens);
-//        for(Integer id:titleMatched){
-//            System.out.println(indexerController.getWebpageById(id).getUrl());
-//        }
         //Calculate ranking score: similarity score + title matched score, return sorted list of pageid and score
         List<HashMap.SimpleEntry<Integer, Double>> topPages = getTopPages(queryTokens, documentVectors, titleMatched);
         //Build return search result to frontend
@@ -139,17 +136,14 @@ public class Searcher {
                 Map<Integer, Integer> postings = getPostingList(token);
                 for(Integer pageId:postings.keySet()){
                     Map<String ,Double> bodyWeights = indexerController.forwardIndexer.getBodyKeywordWights(pageId);
-
                     documentVectors.computeIfAbsent(pageId, k -> new HashMap<>()).put(token,bodyWeights.get(token));
                 }
-
             }
         }
         return documentVectors;
     }
 
     public HashSet<Integer> findIntersection(List<String> words) {
-        System.out.println(words);
         HashSet<Integer> results = new HashSet<>();
         for (String word : words) {
             int wordId = indexerController.getWordIdByWordSearch(word);
@@ -264,8 +258,8 @@ public class Searcher {
             double cosineSimilarity = Compute.calculateCosineSimilarity(queryTokens, weights);
             double pageRankValue = indexerController.getPageRankValue(pageId);
             double score = (0.3 * cosineSimilarity + 0.7 * pageRankValue + 1);
-            System.out.println(cosineSimilarity);
-            System.out.println(pageRankValue);
+//            System.out.println(cosineSimilarity);
+//            System.out.println(pageRankValue);
             if (titleMatched.contains(pageId)) {
                 score *= TITLE_BOOST;
             }
@@ -411,7 +405,10 @@ public class Searcher {
         IndexerController indexerController1 = Spider.indexer;
 
         Searcher searchController = new Searcher(indexerController1);
-        List<SearchResult> searchResults = searchController.search("Magical rescue");
+        List<SearchResult> searchResults = searchController.search("movie");
+        for(SearchResult searchResult:searchResults){
+            System.out.println(searchResult);
+        }
         indexerController1.close();
     }
 
