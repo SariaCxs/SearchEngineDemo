@@ -25,18 +25,20 @@ public class Compute {
     }
 
 
-    public static double calculateCosineSimilarity(List<String> queryKeywords, Map<String, Double> documentVector,  Map<String ,Double> bodyWeights) {
+    public static double calculateCosineSimilarity(List<String> queryKeywords, Map<String, Double> documentVector) {
         double queryMagnitude = Math.sqrt(queryKeywords.size());
         double documentMagnitude = 0.0;
         double dotProduct = 0.0;
 
-        for(String token: bodyWeights.keySet()){
-            double weights = bodyWeights.get(token);
-            documentMagnitude += weights * weights;
-        }
+//        for(String token: bodyWeights.keySet()){
+//            double weights = bodyWeights.get(token);
+//            documentMagnitude += weights * weights;
+//        }
         for(String token: queryKeywords){
             if(documentVector.keySet().contains(token)) {
-                dotProduct += documentVector.get(token);
+                Double weights = documentVector.get(token);
+                dotProduct += weights;
+                documentMagnitude += weights * weights;
             }
         }
         documentMagnitude = Math.sqrt(documentMagnitude);
