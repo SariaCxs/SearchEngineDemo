@@ -59,7 +59,7 @@
 
 ## Running 
 
-When we start the Tomcat for deployment, the server will only read file in the `bin` directory of the installment path of Tomcat. To make sure that the `index` files and `stopwords` file can be read, you need to change two the directory in two file, `indexer/IndexDB` and `utils/TokenizerHandler`.
+When we start the Tomcat for deployment, the server will only read file in the `bin` directory of the installment path of Tomcat. To make sure that the `index` files and `stopwords` file can be read, you need to change two directory in two file, `indexer/IndexDB` and `utils/TokenizerHandler`, you can set them to your own working directory.
 
 ![indedb_dir](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/221465e3-97d5-473e-ab8f-5bb8d678aec0)
 
