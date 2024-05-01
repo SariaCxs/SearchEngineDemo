@@ -51,16 +51,22 @@
 * Configuration on IDEA
 
 ![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/initial.png))
-
 * Modify `URL`  and click `Deploy application configured in Tomcat instance`
-
 ![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/config.png))
+* add the application when the server stars in the Deployment
+![image](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/26b1f09f-a22f-4a1e-8394-a58e5986aece)
 
 
 
 ## Running 
 
-In IntelliJ IDEA, find the **Main class** and run it to perform crawling and indexing, and calculating page rank value.
+When we start the Tomcat for deployment, the server will only read file in the `bin` directory of the installment path of Tomcat. To make sure that the `index` files and `stopwords` file can be read, you need to change two the directory in two file, `indexer/IndexDB` and `utils/TokenizerHandler`.
+
+![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/indedb_dir.png)
+
+![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/stopwords.png)
+
+Find the **Main class** and run it to perform crawling and indexing, and calculating cosine similarity wieights and page rank value.
 
 ![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/main.png)
 
@@ -69,12 +75,6 @@ In IntelliJ IDEA, find the **Main class** and run it to perform crawling and ind
 After fetching 304 webpages, the index files are stored under the root directory of the project. 
 
 ![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/db.png)
-
-When we start the Tomcat for deployment, the server will only read file in the `bin` directory of the installment path of Tomcat. To make sure that the `index` files and `stopwords` file can be read, you need to change two the directory in two file, `indexer/IndexDB` and `utils/TokenizerHandler`.
-
-![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/indedb_dir.png)
-
-![image](https://github.com/SariaCxs/SearchEngineDemo/blob/main/image/stopwords.png)
 
 Start the tomcat server for searching
 
