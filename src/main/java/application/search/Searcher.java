@@ -260,8 +260,8 @@ public class Searcher {
             visitedId.add(pageId);
             Map<String, Double> weights = entry.getValue();
             System.out.println(weights);
-            Map<String ,Double> bodyWeights = indexerController.forwardIndexer.getBodyKeywordWights(pageId);
-            double cosineSimilarity = Compute.calculateCosineSimilarity(queryTokens, weights, bodyWeights);
+//            Map<String ,Double> bodyWeights = indexerController.forwardIndexer.getBodyKeywordWights(pageId);
+            double cosineSimilarity = Compute.calculateCosineSimilarity(queryTokens, weights);
             double pageRankValue = indexerController.getPageRankValue(pageId);
             double score = (0.3 * cosineSimilarity + 0.7 * pageRankValue + 1);
             System.out.println(cosineSimilarity);
