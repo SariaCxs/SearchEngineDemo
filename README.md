@@ -63,12 +63,10 @@ When we start the Tomcat for deployment, the server will only read file in the `
 
 ![indedb_dir](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/221465e3-97d5-473e-ab8f-5bb8d678aec0)
 
-![image](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/1f13c748-4581-46e1-a42c-23bd50c8658a)
-
 Find the **Main class** and run it to perform crawling and indexing, and calculating cosine similarity wieights and page rank value.
 
 ![main](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/b9071d44-c186-4bf8-8e6f-2a9e6739f4ab)
-![finish_fetching](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/897b4aa5-b8a1-44f5-81b4-2c2f3535e427)
+![image](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/1f13c748-4581-46e1-a42c-23bd50c8658a)
 
 After fetching 297 webpages, the index files are stored under the directory you set.
 
