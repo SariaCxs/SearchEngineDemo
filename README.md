@@ -90,8 +90,7 @@ Searching result
 
    ![image](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/3a553b48-3a97-45a8-a078-bd89c5f27403)
 
-2. Input `"international news"` for testing phrase search
-   We use double quotes to indicate recognizing the content inside as a phrase.
+2. Input `"international news"` for testing phrase search (double quotes to detect a phrase)
 
    Search results without double quotes for internation news
    
