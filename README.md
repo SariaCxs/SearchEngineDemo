@@ -67,7 +67,7 @@ When we start the Tomcat for deployment, the server will only read file in the `
 
 Find the **Main class** and run it to perform crawling and indexing, and calculating cosine similarity wieights and page rank value.
 
-![main](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/b9071d44-c186-4bf8-8e6f-2a9e6739f4ab){:height="50%" width="50%" align="center"}
+![main](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/b9071d44-c186-4bf8-8e6f-2a9e6739f4ab){height="50%" width="50%" align="center"}
 
 ![finish_fetching](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/897b4aa5-b8a1-44f5-81b4-2c2f3535e427)
 
