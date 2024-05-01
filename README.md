@@ -90,13 +90,18 @@ Searching result
 
    ![image](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/3a553b48-3a97-45a8-a078-bd89c5f27403)
 
-2. Input `"computer science"` for testing phrase search
+2. Input `"international news"` for testing phrase search
+   We use double quotes to indicate recognizing the content inside as a phrase.
 
-   We use double quota to indicate recognizing the content inside as a phrase.
+   Search results without double quotes for internation news
+   
+   ![image](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/92aa243b-1ff7-44b5-bf2c-759e27b3022a)
+   
+   Search results with double quotes for internation news
 
-   ![image](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/784a64bc-adee-4daa-8d66-dff229751b93)
+   ![image](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/365e793b-9490-45b8-b57c-ef1b8a4c5000)
 
-3. Input `movie`s for testing the PageRank 
+4. Input `movie`s for testing the PageRank 
 
    There are many pages pointing to the webpage that ranks first.
 
