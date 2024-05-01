@@ -63,7 +63,7 @@ When we start the Tomcat for deployment, the server will only read file in the `
 
 ![indedb_dir](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/221465e3-97d5-473e-ab8f-5bb8d678aec0)
 
-![stopwords](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/572441f9-6b59-4e36-8487-204ddea47207)
+![image](https://github.com/SariaCxs/SearchEngineDemo/assets/56586001/1f13c748-4581-46e1-a42c-23bd50c8658a)
 
 Find the **Main class** and run it to perform crawling and indexing, and calculating cosine similarity wieights and page rank value.
 
