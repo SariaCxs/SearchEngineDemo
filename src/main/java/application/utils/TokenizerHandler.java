@@ -42,7 +42,6 @@ public class TokenizerHandler {
                 // Remove stop words
                 if (!stopStem.isStopWord(token)) {
                     // Perform stemming
-                    System.out.println("not stopwords "+token);
                     token = stopStem.stem(token);
                     queryTokens.add(token);
                 }

@@ -152,20 +152,19 @@ public class IndexerController {
             int wordId = getWordIdByWord(word);
             Set<Posting> postingList = (Set<Posting>) invertedIndexer.getPostingTitle(wordId);
             postingList.removeIf(p -> p.getDocId() == pageId);
-            //posting list become empty?
         }
         forwardIndexer.deletePage(pageId);
         indexDB.delEntry(URL_TO_PAGE_ID, pageId);
         indexDB.delEntry(PAGE_ID_TO_WEBPAGE, pageId);
         linkIndexer.delete(pageId);
         updatedPageCount(-1);
+        System.out.println("update pages");
     }
 
     public void updatedPageCount(int increment) {
         Integer cnt = (Integer) indexDB.getEntry(COUNT_INFO, "pageCount");
         int newCnt = cnt + increment;
         indexDB.addEntry(COUNT_INFO, "pageCount", newCnt);
-
     }
 
     public void updateWordCount(int increment){
@@ -290,6 +289,10 @@ public class IndexerController {
     }
 
     public static int getPageCount() {
+        Object num = indexDB.getEntry(COUNT_INFO, "pageCount");
+        if(num == null){
+            return 0;
+        }
         return (int) indexDB.getEntry(COUNT_INFO, "pageCount");
     }
 

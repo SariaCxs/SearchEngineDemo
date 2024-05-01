@@ -39,23 +39,21 @@ public class Main {
         pageRank.computePageRanks();
         for(int pageId:pageIds){
             double pageRankValue = pageRank.pageRankOf(pageId);
-            if(pageRankValue > 0.1){
-                System.out.println(indexer.getWebpageById(pageId).getUrl());
-                System.out.println(pageRankValue);
-            }
             indexer.setPageRankValue(pageId,pageRankValue);
         }
 
         //compute weights for body part
-        Map<String, Integer> DF = new HashMap<>();
+        Map<String, Double> DF = new HashMap<>();
         for(int pageId:pageIds){
             Map<String, List<Integer>> keywordList = indexer.forwardIndexer.getBodyKeywordList(pageId);
             HashMap<String, Double> keyWordWeights = new HashMap<>();
             for(Map.Entry<String,List<Integer>> entry:keywordList.entrySet()){
                 String token = entry.getKey();
+
                 int tfMax = ForwardIndexer.getMaxTFById(pageId);
                 double tf = entry.getValue().size();
-                int df = 0;
+
+                double df = 0;
                 if (DF.keySet().contains(token)){
                     df = DF.get(token);
                 }
@@ -64,12 +62,14 @@ public class Main {
                     df = indexer.invertedIndexer.getPostingBody(wordId).size();
                     DF.put(token, df);
                 }
-                int N = IndexerController.getPageCount();
+                int N = indexer.getPageCount();
                 double tfIdf = (tf/tfMax) * (Math.log(N/df) / Math.log(2.0));
+
                 keyWordWeights.put(token, tfIdf);
             }
             indexer.forwardIndexer.addKeywordListBodyWeights(pageId,keyWordWeights);
         }
+
         //get token information
 //        try {
 //            FileWriter write=new FileWriter("C:\\Users\\User\\Desktop\\wordInfo.txt");

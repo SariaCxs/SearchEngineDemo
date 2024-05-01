@@ -30,10 +30,6 @@ public class Compute {
         double documentMagnitude = 0.0;
         double dotProduct = 0.0;
 
-//        for(String token: bodyWeights.keySet()){
-//            double weights = bodyWeights.get(token);
-//            documentMagnitude += weights * weights;
-//        }
         for(String token: queryKeywords){
             if(documentVector.keySet().contains(token)) {
                 Double weights = documentVector.get(token);
@@ -44,9 +40,6 @@ public class Compute {
         documentMagnitude = Math.sqrt(documentMagnitude);
         return dotProduct / (queryMagnitude * documentMagnitude);
     }
-
-    //String TF idf
-
 
 
 }
